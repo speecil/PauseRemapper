@@ -66,3 +66,11 @@ extern.cmake
 
 # QMOD Schema
 mod.json.schema
+*.bin
+*.ipch
+*.ps1
+*.txt
+.vscode/tasks.json
+.vscode/settings.json
+.vscode/launch.json
+.vscode/c_cpp_properties.json
