@@ -1,6 +1,6 @@
-# #{name}
+# Pause Remapper
 
-#{description}
+# Allows the user to change the binding of their pause button
 
 ## Credits
 
