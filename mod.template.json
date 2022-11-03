@@ -5,6 +5,7 @@
   "id": "PauseRemapper",
   "author": "speecil",
   "version": "0.1.0",
+  "coverImage": "cover.png",
   "packageId": "com.beatgames.beatsaber",
   "packageVersion": "1.25.1",
   "description": "Allows the user to change which button pauses a map",

@@ -6,16 +6,13 @@
 #include "MainConfig.hpp"
 #include "GlobalNamespace/HMMainThreadDispatcher.hpp"
 #include "UI/PauseRemapperFlowCoordinator.hpp"
+#include "GlobalNamespace/GamePause.hpp"
+#include "GlobalNamespace/PauseMenuManager.hpp"
+#include "GlobalNamespace/BeatmapObjectManager.hpp"
+#include "System/Action.hpp"
 using namespace GlobalNamespace;
 using namespace QuestUI;
-const std::vector<OVRInput::Button> buttons = {
-    OVRInput::Button::One,
-    OVRInput::Button::Two,
-    OVRInput::Button::Three,
-    OVRInput::Button::Four,
-};
 GlobalNamespace::PauseController* pauser;
-int shouldpause = 0;
 
 ModInfo modInfo;
 DEFINE_CONFIG(MainConfig);
@@ -34,69 +31,18 @@ Logger& getLogger() {
 
 MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDispatcher* self) {
     AnUpdate(self);
-
-    for(auto button : buttons){
-    bool abutton = OVRInput::GetDown(button, OVRInput::Button::One);
-    bool bbutton = OVRInput::GetDown(button, OVRInput::Button::Two);
-    bool xbutton = OVRInput::GetDown(button, OVRInput::Button::Three);
-    bool ybutton = OVRInput::GetDown(button, OVRInput::Button::Four);
-
-    if(getMainConfig().isEnabled.GetValue()){
-    // default button
-    if(getMainConfig().Button.GetValue() == "default"){
-
-    }
-    // A Button
-    if(getMainConfig().Button.GetValue() == "abutton"){
-        if(abutton){
-            shouldpause = 1;
-        }
-    }
-    else{
-        shouldpause = 0;
-    }
-    // B Button
-    if(getMainConfig().Button.GetValue() == "bbutton"){
-        if(bbutton){
-            shouldpause = 1;
-        }
-    }
-    else{
-        shouldpause = 0;
-    }
-    // X Button
-    if(getMainConfig().Button.GetValue() == "xbutton"){
-        if(xbutton){
-            shouldpause = 1;
-        }
-    }
-    else{
-        shouldpause = 0;
-    }
-    // Y Button
-    if(getMainConfig().Button.GetValue() == "ybutton"){
-        if(ybutton){
-            shouldpause = 1;
-        }
-    }
-    else{
-        shouldpause = 0;
+    if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::One, OVRInput::Controller::Touch)){
+        if(pauser->get_canPause()) {
+                pauser->paused = true;
+                pauser->gamePause->Pause();
+                pauser->pauseMenuManager->ShowMenu();
+                pauser->beatmapObjectManager->HideAllBeatmapObjects(true);
+                pauser->beatmapObjectManager->PauseAllBeatmapObjects(true);
+                if(pauser->didPauseEvent)
+                    pauser->didPauseEvent->Invoke();
+            }
     }
 }
-
-
-    switch (shouldpause) {
-        
-        case 0:
-            break;
-
-        case 1:
-            getLogger().info("pause");
-            pauser->Pause();
-            break;
-}
-}
-}    
 
 
 // Called at the early stages of game loading
@@ -119,6 +65,6 @@ extern "C" void load() {
     QuestUI::Register::RegisterMainMenuModSettingsFlowCoordinator<PauseRemapper::UI::PauseRemapperFlowCoordinator*>(modInfo);
 
     getLogger().info("Installing hooks...");
-    // Install our hooks (none defined yet)
+    INSTALL_HOOK(getLogger(), AnUpdate);
     getLogger().info("Installed all hooks!");
 }
