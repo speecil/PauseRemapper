@@ -27,15 +27,17 @@ void PauseRemapper::UI::MainViewController::DidActivate(bool firstActivation, bo
     TMPro::TextMeshProUGUI * space1;
     TMPro::TextMeshProUGUI * space2;
     UnityEngine::GameObject* container = QuestUI::BeatSaberUI::CreateScrollableSettingsContainer(get_transform());
-    text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Change you're pause button here");
+    text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Change your pause button here");
+    space1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "");
+    space2 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "");
     text3 -> set_alignment(TMPro::TextAlignmentOptions::Center);
     text3 -> set_fontSize(6.0);
         
-        QuestUI::BeatSaberUI::CreateDropdown(container, getMainConfig().Button.GetName(), getMainConfig().Button.GetValue(), { "Default", "abutton", "bbutton", "xbutton", "ybutton"},
+        QuestUI::BeatSaberUI::CreateDropdown(container, getMainConfig().Button.GetName(), getMainConfig().Button.GetValue(), { "Default", "A Button", "B Button", "X Button", "Y Button"},
             [](StringW value) {
-                std::string setting = "";
-                getMainConfig().Button.SetValue(setting);
+                getMainConfig().Button.SetValue(value);
             }
         );
+    AddConfigValueToggle(container->get_transform(), getMainConfig().EnableResume);
 }
 

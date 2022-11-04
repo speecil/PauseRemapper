@@ -41,7 +41,7 @@ void PauseRemapper::UI::PauseRemapperFlowCoordinator::Awake() {
 
 void PauseRemapper::UI::PauseRemapperFlowCoordinator::DidActivate(bool firstActivation, bool addedToHeirarchy, bool screenSystemEnabling) {
     if (firstActivation){
-    SetTitle("Pause Remapper!", HMUI::ViewController::AnimationType::In);
+    SetTitle("Pause Remapper! DEV BUILD", HMUI::ViewController::AnimationType::In);
     showBackButton = true;
     ProvideInitialViewControllers(MainViewController, nullptr, nullptr, CreditsViewController, nullptr);
 }}
