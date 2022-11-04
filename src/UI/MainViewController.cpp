@@ -29,7 +29,6 @@ void PauseRemapper::UI::MainViewController::DidActivate(bool firstActivation, bo
     UnityEngine::GameObject* container = QuestUI::BeatSaberUI::CreateScrollableSettingsContainer(get_transform());
     text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Change your pause button here");
     space1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "");
-    space2 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "");
     text3 -> set_alignment(TMPro::TextAlignmentOptions::Center);
     text3 -> set_fontSize(6.0);
         
@@ -38,6 +37,6 @@ void PauseRemapper::UI::MainViewController::DidActivate(bool firstActivation, bo
                 getMainConfig().Button.SetValue(value);
             }
         );
-    AddConfigValueToggle(container->get_transform(), getMainConfig().EnableResume);
+    //AddConfigValueToggle(container->get_transform(), getMainConfig().EnableResume);
 }
 
