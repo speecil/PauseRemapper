@@ -27,9 +27,9 @@ void PauseRemapper::UI::MainViewController::DidActivate(bool firstActivation, bo
     TMPro::TextMeshProUGUI * space1;
     TMPro::TextMeshProUGUI * space2;
     UnityEngine::GameObject* container = QuestUI::BeatSaberUI::CreateScrollableSettingsContainer(get_transform());
-    space1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), " \n \n");
-    text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Pause Remapper has moved to the \n mod settings tab within song selection");
+    space1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), " \n \n \n \n");
+    text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Pause Remapper has moved to the \n mod settings tab within song selection. \n \n Included in this update is \n every buttons ability to pause, \n and thus the config has changed, \n you will need to rebind your buttons. \n Sorry!");
     text3 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    text3 -> set_fontSize(6.0);
+    text3 -> set_fontSize(4.0);
 }
 

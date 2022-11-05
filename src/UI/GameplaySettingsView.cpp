@@ -54,14 +54,14 @@ void PauseRemapper::UI::GameplaySettingsView::DidActivate(bool firstActivation)
     text3 -> set_alignment(TMPro::TextAlignmentOptions::Center);
     text3 -> set_fontSize(6.0);
         
-    QuestUI::BeatSaberUI::CreateDropdown(vertical, getMainConfig().Button.GetName(), getMainConfig().Button.GetValue(), { "Default", "A Button", "B Button", "X Button", "Y Button", "Left Trigger", "Right Trigger"},
+    QuestUI::BeatSaberUI::CreateDropdown(vertical, getMainConfig().Button.GetName(), getMainConfig().Button.GetValue(), { "Default", "A Button", "B Button", "X Button", "Y Button", "Left Trigger", "Right Trigger", "Left Grip", "Right Grip"},
             [](StringW value) {
                 getMainConfig().Button.SetValue(value);
                 getMainConfig().config->Write();
             }
         );
     space2 = QuestUI::BeatSaberUI::CreateText(vertical-> get_transform(), " ");
-    QuestUI::BeatSaberUI::CreateDropdown(vertical, getMainConfig().Button2.GetName(), getMainConfig().Button2.GetValue(), { "Default", "A Button", "B Button", "X Button", "Y Button", "Left Trigger", "Right Trigger"},
+    QuestUI::BeatSaberUI::CreateDropdown(vertical, getMainConfig().Button2.GetName(), getMainConfig().Button2.GetValue(), { "Default", "A Button", "B Button", "X Button", "Y Button", "Left Trigger", "Right Trigger", "Left Grip", "Right Grip"},
             [](StringW value2) {
                 getMainConfig().Button2.SetValue(value2);
                 getMainConfig().config->Write();
