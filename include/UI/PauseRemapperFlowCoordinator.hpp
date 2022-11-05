@@ -13,7 +13,7 @@
 DECLARE_CLASS_CODEGEN(PauseRemapper::UI, PauseRemapperFlowCoordinator, HMUI::FlowCoordinator,
                       DECLARE_INSTANCE_FIELD(PauseRemapper::UI::MainViewController*, MainViewController);
                       DECLARE_INSTANCE_FIELD(PauseRemapper::UI::CreditsViewController*, CreditsViewController);
-                      //fortnite
+                      //fortnite    
 
                       DECLARE_INSTANCE_METHOD(void, Awake);
 

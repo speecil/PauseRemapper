@@ -3,6 +3,7 @@
 #include "UI/PauseRemapperFlowCoordinator.hpp"
 #include "UI/MainViewController.hpp"
 #include "UI/CreditsViewController.hpp"
+#include "UI/GameplaySettingsView.hpp"
 
 #include "MainConfig.hpp"
 

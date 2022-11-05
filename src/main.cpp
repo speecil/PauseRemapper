@@ -7,7 +7,7 @@
 #include "GlobalNamespace/OVRInput_Button.hpp"
 #include "GlobalNamespace/PauseController.hpp"
 #include "GlobalNamespace/PauseAnimationController.hpp"
-
+#include "UI/GameplaySettingsView.hpp"
 #include "GlobalNamespace/HMMainThreadDispatcher.hpp"
 #include "UI/PauseRemapperFlowCoordinator.hpp"
 #include "GlobalNamespace/GamePause.hpp"
@@ -45,7 +45,7 @@ MAKE_HOOK_MATCH(SceneChanged, &UnityEngine::SceneManagement::SceneManager::Inter
 
 MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDispatcher* self) {
     AnUpdate(self);
-
+    // A button
     if(getMainConfig().Button.GetValue() == "A Button"){
         
         if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::One, OVRInput::Controller::Touch)){
@@ -69,6 +69,30 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 break;
             }
     }
+    if(getMainConfig().Button2.GetValue() == "A Button"){
+        
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::One, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    // B button
     if(getMainConfig().Button.GetValue() == "B Button"){
         
         if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Two, OVRInput::Controller::Touch)){
@@ -92,6 +116,30 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 break;
             }
     }
+    if(getMainConfig().Button2.GetValue() == "B Button"){
+        
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Two, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    // X Button
     if(getMainConfig().Button.GetValue() == "X Button"){
         
         if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Three, OVRInput::Controller::Touch)){
@@ -115,8 +163,144 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 break;
             }
     }
+    if(getMainConfig().Button2.GetValue() == "X Button"){
+        
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Three, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    // Y Button
     if(getMainConfig().Button.GetValue() == "Y Button"){
         if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Four, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    if(getMainConfig().Button2.GetValue() == "Y Button"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Four, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    // Left Trigger
+    if(getMainConfig().Button.GetValue() == "Left Trigger"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryIndexTrigger, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    if(getMainConfig().Button2.GetValue() == "Left Trigger"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryIndexTrigger, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    // Right Trigger
+    if(getMainConfig().Button.GetValue() == "Right Trigger"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryIndexTrigger, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    if(getMainConfig().Button2.GetValue() == "Right Trigger"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryIndexTrigger, OVRInput::Controller::Touch)){
             shouldpause = 1;
         }
         else{
@@ -162,7 +346,7 @@ extern "C" void load() {
     custom_types::Register::AutoRegister();
     QuestUI::Init();
     QuestUI::Register::RegisterMainMenuModSettingsFlowCoordinator<PauseRemapper::UI::PauseRemapperFlowCoordinator*>(modInfo);
-
+    QuestUI::Register::RegisterGameplaySetupMenu<PauseRemapper::UI::GameplaySettingsView*>(modInfo, "Pause Remapper");
     getLogger().info("Installing hooks...");
     INSTALL_HOOK(getLogger(), AnUpdate);
     INSTALL_HOOK(getLogger(), SceneChanged);
