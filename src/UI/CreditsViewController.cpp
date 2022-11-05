@@ -38,7 +38,7 @@ void PauseRemapper::UI::CreditsViewController::DidActivate(bool firstActivation,
     text4 = QuestUI::BeatSaberUI::CreateText(layout-> get_transform(), "Message speecil#5350 on discord if there are any issues");
     text4 -> set_alignment(TMPro::TextAlignmentOptions::Center);
     text4 -> set_fontStyle(TMPro::FontStyles::Normal);
-    text5 = QuestUI::BeatSaberUI::CreateText(layout -> get_transform(), "Pause Remapper 0.1.0");
+    text5 = QuestUI::BeatSaberUI::CreateText(layout -> get_transform(), "Pause Remapper 0.2.0");
     text5 -> set_alignment(TMPro::TextAlignmentOptions::Center);
     text5 -> set_fontSize(5.0);
     text5 -> set_fontStyle(TMPro::FontStyles::Normal);

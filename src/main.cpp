@@ -344,8 +344,142 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 break;
             }
     }
+    if(getMainConfig().Button2.GetValue() == "Left Grip"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryHandTrigger, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    if(getMainConfig().Button.GetValue() == "Right Grip"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryHandTrigger, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
     if(getMainConfig().Button2.GetValue() == "Right Grip"){
         if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryHandTrigger, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    //right thumb stick
+    if(getMainConfig().Button2.GetValue() == "Click Right Thumbstick"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstick, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    if(getMainConfig().Button.GetValue() == "Click Right Thumbstick"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstick, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    // left thumstick
+    if(getMainConfig().Button.GetValue() == "Click Left Thumbstick"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstick, OVRInput::Controller::Touch)){
+            shouldpause = 1;
+        }
+        else{
+            shouldpause = 0;
+        }
+        if(!inGameplay)
+            return;
+            switch (shouldpause) {
+            case 0:
+                break;
+            case 1:
+                getLogger().info("paused");
+                if(pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause()) {
+                    pauser->Pause();
+                }
+                break;
+            default:
+                break;
+            }
+    }
+    if(getMainConfig().Button2.GetValue() == "Click Left Thumbstick"){
+        if(GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstick, OVRInput::Controller::Touch)){
             shouldpause = 1;
         }
         else{
