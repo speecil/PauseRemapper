@@ -6,13 +6,9 @@
 #include "config-utils/shared/config-utils.hpp"
 #include "GlobalNamespace/OVRInput_Button.hpp"
 #include "GlobalNamespace/PauseController.hpp"
-#include "GlobalNamespace/PauseAnimationController.hpp"
 #include "UI/GameplaySettingsView.hpp"
 #include "GlobalNamespace/HMMainThreadDispatcher.hpp"
 #include "UI/PauseRemapperFlowCoordinator.hpp"
-#include "GlobalNamespace/GamePause.hpp"
-#include "GlobalNamespace/PauseMenuManager.hpp"
-#include "GlobalNamespace/BeatmapObjectManager.hpp"
 #include "System/Action.hpp"
 #include "UnityEngine/SceneManagement/SceneManager.hpp"
 
@@ -524,7 +520,6 @@ extern "C" void load() {
     // Initialises Quest UI
     custom_types::Register::AutoRegister();
     QuestUI::Init();
-    QuestUI::Register::RegisterMainMenuModSettingsFlowCoordinator<PauseRemapper::UI::PauseRemapperFlowCoordinator*>(modInfo);
     QuestUI::Register::RegisterGameplaySetupMenu<PauseRemapper::UI::GameplaySettingsView*>(modInfo, "Pause Remapper");
     getLogger().info("Installing hooks...");
     INSTALL_HOOK(getLogger(), AnUpdate);

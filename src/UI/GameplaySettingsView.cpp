@@ -2,8 +2,9 @@
 #include "questui/shared/QuestUI.hpp"
 #include "GlobalNamespace/GameplaySetupViewController.hpp"
 #include "UI/GameplaySettingsView.hpp" 
-
+#include "sprites.hpp"
 #include "MainConfig.hpp"
+#include "UnityEngine/Application.hpp"
 using namespace UnityEngine;
 using namespace UnityEngine::UI;
 using namespace HMUI;
@@ -31,9 +32,13 @@ DEFINE_TYPE(PauseRemapper::UI, GameplaySettingsView);
     fitter##identifier->set_verticalFit(ContentSizeFitter::FitMode::PreferredSize);         \
     fitter##identifier->set_horizontalFit(ContentSizeFitter::FitMode::PreferredSize)
 
+void test(){
+    Application::OpenURL("https://patreon.com/speecil");
+}
+
 void PauseRemapper::UI::GameplaySettingsView::DidActivate(bool firstActivation) 
 {   if (!firstActivation) return;
-    
+    UnityEngine::Sprite* logo = BeatSaberUI::Base64ToSprite(Patreon);
     TMPro::TextMeshProUGUI * text;
     TMPro::TextMeshProUGUI * text1;
     TMPro::TextMeshProUGUI * text2;
@@ -70,8 +75,14 @@ void PauseRemapper::UI::GameplaySettingsView::DidActivate(bool firstActivation)
     space3 = QuestUI::BeatSaberUI::CreateText(vertical -> get_transform(), " \n \n");
     text4 = QuestUI::BeatSaberUI::CreateText(vertical-> get_transform(), "Message speecil#5350 on discord if there are any issues");
     text4 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    text4 -> set_fontStyle(TMPro::FontStyles::Normal);
-    space2 = QuestUI::BeatSaberUI::CreateText(vertical-> get_transform(), " ");
+    text4 -> set_fontStyle(TMPro::FontStyles::Normal);\
+    space2 = QuestUI::BeatSaberUI::CreateText(vertical-> get_transform(), "\n \n ");
+    text2 = QuestUI::BeatSaberUI::CreateText(vertical-> get_transform(), "Subscribe to my patreon for pre-release mods!");
+    text2 -> set_alignment(TMPro::TextAlignmentOptions::Center);
+    text2 -> set_fontStyle(TMPro::FontStyles::Normal);
+
+    BeatSaberUI::CreateUIButton(vertical->get_transform(), "Patreon", "PlayButton", UnityEngine::Vector2(), UnityEngine::Vector2(6.0f, 11.3f), test);
+
     text5 = QuestUI::BeatSaberUI::CreateText(vertical -> get_transform(), "Pause Remapper v0.2.0 by Speecil");
     text5 -> set_alignment(TMPro::TextAlignmentOptions::Center);
     text5 -> set_fontSize(5.0);
