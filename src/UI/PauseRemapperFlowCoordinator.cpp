@@ -34,8 +34,6 @@ DEFINE_TYPE(PauseRemapper::UI, PauseRemapperFlowCoordinator);
 void PauseRemapper::UI::PauseRemapperFlowCoordinator::Awake() {
 
         MainViewController = QuestUI::BeatSaberUI::CreateViewController<PauseRemapper::UI::MainViewController*>();
-        
-        CreditsViewController = QuestUI::BeatSaberUI::CreateViewController<PauseRemapper::UI::CreditsViewController*>();
 
 }
 
@@ -44,7 +42,7 @@ void PauseRemapper::UI::PauseRemapperFlowCoordinator::DidActivate(bool firstActi
     if (firstActivation){
     SetTitle("Pause Remapper -- NOTICE", HMUI::ViewController::AnimationType::In);
     showBackButton = true;
-    ProvideInitialViewControllers(MainViewController, nullptr, nullptr, CreditsViewController, nullptr);
+    ProvideInitialViewControllers(nullptr, nullptr, nullptr, nullptr, nullptr);
 }}
 
 void PauseRemapper::UI::PauseRemapperFlowCoordinator::BackButtonWasPressed(HMUI::ViewController* topViewController) {

@@ -83,7 +83,7 @@ void PauseRemapper::UI::GameplaySettingsView::DidActivate(bool firstActivation)
 
     BeatSaberUI::CreateUIButton(vertical->get_transform(), "Patreon", "PlayButton", UnityEngine::Vector2(), UnityEngine::Vector2(6.0f, 11.3f), test);
 
-    text5 = QuestUI::BeatSaberUI::CreateText(vertical -> get_transform(), "Pause Remapper v0.2.0 by Speecil");
+    text5 = QuestUI::BeatSaberUI::CreateText(vertical -> get_transform(), "Pause Remapper v0.3.0_DEV by Speecil");
     text5 -> set_alignment(TMPro::TextAlignmentOptions::Center);
     text5 -> set_fontSize(5.0);
     text5 -> set_fontStyle(TMPro::FontStyles::Normal);
