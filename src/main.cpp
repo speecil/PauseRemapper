@@ -12,12 +12,10 @@
 #include "UI/PauseRemapperFlowCoordinator.hpp"
 #include "System/Action.hpp"
 #include "UnityEngine/SceneManagement/SceneManager.hpp"
-#include "UnityEngine/Time.hpp"
 
-#include "System/Collections/IEnumerator.hpp"
-#include "system/Collections/IDictionaryEnumerator.hpp"
+
 #include "GlobalNamespace/GamePause.hpp"
-#include "custom-types/shared/coroutine.hpp"
+
 using namespace GlobalNamespace;
 using namespace QuestUI;
 PauseController* pauser;

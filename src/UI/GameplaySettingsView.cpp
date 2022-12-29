@@ -2,7 +2,6 @@
 #include "questui/shared/QuestUI.hpp"
 #include "GlobalNamespace/GameplaySetupViewController.hpp"
 #include "UI/GameplaySettingsView.hpp"
-#include "sprites.hpp"
 #include "MainConfig.hpp"
 #include "UnityEngine/Application.hpp"
 #include "TMPro/TextMeshProUGUI.hpp"
@@ -44,7 +43,6 @@ void PauseRemapper::UI::GameplaySettingsView::DidActivate(
 {
     if (!firstActivation)
         return;
-    UnityEngine::Sprite* logo = BeatSaberUI::Base64ToSprite(Patreon);
     TMPro::TextMeshProUGUI* text;
     TMPro::TextMeshProUGUI* text1;
     TMPro::TextMeshProUGUI* text2;
