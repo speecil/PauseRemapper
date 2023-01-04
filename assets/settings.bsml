@@ -1,0 +1,6 @@
+<bg id='root'  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://raw.githubusercontent.com/RedBrumbler/Quest-BSML-Docs/gh-pages/schema.xsd'>
+    <vertical pref-width='60' pref-height='30' bg='round-rect-panel' vertical-fit='PreferredSize' pad='2'>
+    <dropdown-list-setting text="Primary Pause Button" options='BOptions' apply-on-change="true"/>
+    <dropdown-list-setting text="Secondary Pause Button" options='BOptions' apply-on-change="true"/>
+    </vertical>
+</bg>
