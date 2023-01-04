@@ -61,7 +61,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
 {
     AnUpdate(self);
 
-    // A button
+    // A button lmfao
     if (getMainConfig().Button.GetValue() == "A Button" || getMainConfig().Button2.GetValue() == "A Button")
     {
 
