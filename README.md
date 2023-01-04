@@ -4,6 +4,9 @@ Allows you to change what button pauses the game.
 
 ## Features
 
+### Pausing
+  - Change which button pauses the game
+
 ### UI
   - Change which button pauses with in game UI (crazy i know)
 
