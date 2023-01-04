@@ -11,7 +11,6 @@
 #include "questui/shared/QuestUI.hpp"
 #include "config-utils/shared/config-utils.hpp"
 
-
 #include "GlobalNamespace/OVRInput_Button.hpp"
 #include "GlobalNamespace/PauseController.hpp"
 #include "GlobalNamespace/PauseMenuManager.hpp"
@@ -31,7 +30,6 @@ bool paused;
 bool alreadyPressed;
 
 static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
-
 
 // Returns a logger, useful for printing debug messages
 Logger &getLogger()
@@ -71,7 +69,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         {
             getLogger().info("Selected Button Clicked");
             // Check that the user is within gameplay (not menu)
-            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause() )
+            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
 
@@ -87,7 +85,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         {
             getLogger().info("Selected Button Clicked");
             // Check that the user is within gameplay (not menu)
-            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause() )
+            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
 
@@ -103,7 +101,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         {
             getLogger().info("Selected Button Clicked");
             // Check that the user is within gameplay (not menu)
-            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause() )
+            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
 
@@ -118,7 +116,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         {
             getLogger().info("Selected Button Clicked");
             // Check that the user is within gameplay (not menu)
-            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause() )
+            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
 
@@ -133,7 +131,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         {
             getLogger().info("Selected Button Clicked");
             // Check that the user is within gameplay (not menu)
-            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause() )
+            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
 
@@ -148,7 +146,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         {
             getLogger().info("Selected Button Clicked");
             // Check that the user is within gameplay (not menu)
-            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause() )
+            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
 
@@ -163,7 +161,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         {
             getLogger().info("Selected Button Clicked");
             // Check that the user is within gameplay (not menu)
-            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause() )
+            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
 
