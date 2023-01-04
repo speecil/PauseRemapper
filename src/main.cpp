@@ -32,7 +32,6 @@ bool alreadyPressed;
 
 static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
 
-DEFINE_CONFIG(MainConfig); // Declares the config
 
 // Returns a logger, useful for printing debug messages
 Logger &getLogger()
@@ -235,7 +234,8 @@ extern "C" void load()
     il2cpp_functions::Init();
     getMainConfig().Init(modInfo);
     custom_types::Register::AutoRegister();
-    // Initialises Quest UI and a gameplay settings menu
+    getMainConfig().Init(modInfo);
+    // Initialises BSML**** and a gameplay settings menu
     BSML::Register::RegisterGameplaySetupTab("PauseRemapper", MOD_ID "_settings", UIManager::get_instance(), BSML::MenuType::All);
     // Install Hooks
     getLogger().info("Installing hooks...");
