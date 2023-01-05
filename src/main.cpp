@@ -62,7 +62,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
     AnUpdate(self);
 
     // A button lmfao
-    if (getMainConfig().Button.GetValue() == "A Button" || getMainConfig().Button2.GetValue() == "A Button")
+    if (getMainConfig().aButton.GetValue())
     {
 
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::One, OVRInput::Controller::Touch))
@@ -78,7 +78,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         }
     }
     // B button
-    if (getMainConfig().Button.GetValue() == "B Button" || getMainConfig().Button2.GetValue() == "B Button")
+    if (getMainConfig().bButton.GetValue())
     {
 
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Two, OVRInput::Controller::Touch))
@@ -94,7 +94,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         }
     }
     // X Button
-    if (getMainConfig().Button.GetValue() == "X Button" || getMainConfig().Button2.GetValue() == "X Button")
+    if (getMainConfig().xButton.GetValue())
     {
 
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Three, OVRInput::Controller::Touch))
@@ -110,7 +110,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         }
     }
     // Y Button
-    if (getMainConfig().Button.GetValue() == "Y Button" || getMainConfig().Button2.GetValue() == "Y Button")
+    if (getMainConfig().yButton.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Four, OVRInput::Controller::Touch))
         {
@@ -125,7 +125,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         }
     }
     // Left Trigger
-    if (getMainConfig().Button.GetValue() == "Left Trigger" || getMainConfig().Button2.GetValue() == "Left Trigger")
+    if (getMainConfig().leftTrigger.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryIndexTrigger, OVRInput::Controller::Touch))
         {
@@ -140,7 +140,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         }
     }
     // Right Trigger
-    if (getMainConfig().Button.GetValue() == "Right Trigger" || getMainConfig().Button2.GetValue() == "Right Trigger")
+    if (getMainConfig().rightTrigger.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryIndexTrigger, OVRInput::Controller::Touch))
         {
@@ -155,7 +155,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         }
     }
     // Grip Buttons
-    if (getMainConfig().Button.GetValue() == "Left Grip" || getMainConfig().Button.GetValue() == "Left Grip")
+    if (getMainConfig().leftGrip.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryHandTrigger, OVRInput::Controller::Touch))
         {
@@ -169,7 +169,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
             }
         }
     }
-    if (getMainConfig().Button.GetValue() == "Right Grip" || getMainConfig().Button2.GetValue() == "Right Grip")
+    if (getMainConfig().rightGrip.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryHandTrigger, OVRInput::Controller::Touch))
         {
@@ -183,8 +183,8 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
             }
         }
     }
-    // right thumb stick
-    if (getMainConfig().Button2.GetValue() == "Click Right Thumbstick" || getMainConfig().Button2.GetValue() == "Click Right Thumbstick")
+    // left thumb stick
+    if (getMainConfig().leftThumbstick.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstick, OVRInput::Controller::Touch))
         {
@@ -198,8 +198,8 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
             }
         }
     }
-    // lrf tumbick
-    if (getMainConfig().Button.GetValue() == "Click Left Thumbstick" || getMainConfig().Button2.GetValue() == "Click Left Thumbstick")
+    // right tumbick
+    if (getMainConfig().rightThumbstick.GetValue())
     {
         // Check that the button is pressed
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstick, OVRInput::Controller::Touch))
@@ -208,7 +208,40 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
-                pauser->paused ? sleep(2), pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
+                pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
+
+                return;
+            }
+        }
+    }
+    ///////
+    // left thumb stick MOVE
+    if (getMainConfig().leftThumbstick.GetValue())
+    {
+        // Check that the button is pressed
+        if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstickDown, OVRInput::Controller::Touch) || GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstickUp, OVRInput::Controller::Touch) || GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstickLeft, OVRInput::Controller::Touch) || GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstickRight, OVRInput::Controller::Touch))
+        {
+            getLogger().info("Selected Button Clicked");
+            // Check that the user is within gameplay (not menu)
+            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
+            {
+                pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
+
+                return;
+            }
+        }
+    }
+    // right tumbick MOVE
+    if (getMainConfig().rightThumbstick.GetValue())
+    {
+        // Check that the button is pressed
+        if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstickDown, OVRInput::Controller::Touch) || GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstickUp, OVRInput::Controller::Touch) || GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstickLeft, OVRInput::Controller::Touch) || GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstickRight, OVRInput::Controller::Touch))
+        {
+            getLogger().info("Selected Button Clicked");
+            // Check that the user is within gameplay (not menu)
+            if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
+            {
+                pauser->paused ? pauseMENU->didPressContinueButtonEvent->Invoke() : pauser->Pause();
 
                 return;
             }
@@ -234,7 +267,8 @@ extern "C" void load()
     custom_types::Register::AutoRegister();
     getMainConfig().Init(modInfo);
     // Initialises BSML**** and a gameplay settings menu
-    BSML::Register::RegisterGameplaySetupTab("PauseRemapper", MOD_ID "_settings", UIManager::get_instance(), BSML::MenuType::All);
+    BSML::Init();
+    BSML::Register::RegisterGameplaySetupTab("Pause Remapper", MOD_ID "_settings", UIManager::get_instance(), BSML::MenuType::All);
     // Install Hooks
     getLogger().info("Installing hooks...");
     INSTALL_HOOK(getLogger(), AnUpdate);

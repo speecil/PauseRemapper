@@ -11,7 +11,7 @@
 #include "beatsaber-hook/shared/utils/hooking.hpp"
 
 // Define these functions here so that we can easily read configuration and log information from other files
-Configuration& getConfig();
-Logger& getLogger();
+Configuration &getConfig();
+Logger &getLogger();
 
 static bool shouldRestart;

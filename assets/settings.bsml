@@ -1,6 +1,30 @@
-<bg id='root'  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://raw.githubusercontent.com/RedBrumbler/Quest-BSML-Docs/gh-pages/schema.xsd'>
-    <vertical pref-width='60' pref-height='30' bg='round-rect-panel' vertical-fit='PreferredSize' pad='2'>
-    <dropdown-list-setting text="Primary Pause Button" options='BOptions' apply-on-change="true"/>
-    <dropdown-list-setting text="Secondary Pause Button" options='BOptions' apply-on-change="true"/>
-    </vertical>
+<bg id='root'
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://raw.githubusercontent.com/RedBrumbler/Quest-BSML-Docs/gh-pages/schema.xsd'>
+    <tab-selector tab-tag='tabs'/>
+    <horizontal preferred-width="50" preferred-height="40" pad="1">
+        <tab tab-name="Buttons" tags="tabs">
+            <vertical bg="round-rect-panel" spacing="1">
+                <toggle-setting value="aButton" text="A Button" apply-on-change="true"/>
+                <toggle-setting value="bButton" text="B Button" apply-on-change="true"/>
+                <toggle-setting value="xButton" text="X Button" apply-on-change="true"/>
+                <toggle-setting value="yButton" text="Y Button" apply-on-change="true"/>
+            </vertical>
+        </tab>
+        <tab tab-name="Thumbsticks" tags="tabs">
+            <vertical bg="round-rect-panel" spacing="1">
+                <toggle-setting value="leftThumbstick" text="Click Left Thumbstick" apply-on-change="true"/>
+                <toggle-setting value="rightThumbstick" text="Click Right Thumbstick" apply-on-change="true"/>
+                <toggle-setting value="moveLThumbstick" text="Move Left Thumbstick (any direction)" apply-on-change="true"/>
+                <toggle-setting value="moveRThumbstick" text="Move Right Thumbstick (any direction)" apply-on-change="true"/>
+            </vertical>
+        </tab>
+        <tab tab-name="Triggers" tags="tabs">
+            <vertical bg="round-rect-panel" spacing="1">
+                <toggle-setting value="leftTrigger" text="Left Trigger" apply-on-change="true"/>
+                <toggle-setting value="rightTrigger" text="Right Trigger" apply-on-change="true"/>
+                <toggle-setting value="leftGrip" text="Left Grip" apply-on-change="true"/>
+                <toggle-setting value="rightGrip" text="Right Grip" apply-on-change="true"/>
+            </vertical>
+        </tab>
+    </horizontal>
 </bg>

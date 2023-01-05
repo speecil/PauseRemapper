@@ -24,18 +24,68 @@ namespace PauseRemapper::UI
         return instance.ptr();
     }
     void UIManager::ctor() {}
-
-    StringW UIManager::get_Button1() { return getMainConfig().Button.GetValue(); }
-    void UIManager::set_Button1(StringW value)
+    // abxy
+    bool UIManager::get_aButton() { return getMainConfig().aButton.GetValue(); }
+    void UIManager::set_aButton(bool value)
     {
-        value->ToString();
-        getMainConfig().Button.SetValue(value, false);
+        getMainConfig().aButton.SetValue(value);
     }
-    StringW UIManager::get_Button2() { return getMainConfig().Button2.GetValue(); }
-    void UIManager::set_Button2(StringW value)
+    bool UIManager::get_bButton() { return getMainConfig().bButton.GetValue(); }
+    void UIManager::set_bButton(bool value)
     {
-        value->ToString();
-        getMainConfig().Button2.SetValue(value, false);
+        getMainConfig().bButton.SetValue(value);
+    }
+    bool UIManager::get_xButton() { return getMainConfig().xButton.GetValue(); }
+    void UIManager::set_xButton(bool value)
+    {
+        getMainConfig().xButton.SetValue(value);
+    }
+    bool UIManager::get_yButton() { return getMainConfig().yButton.GetValue(); }
+    void UIManager::set_yButton(bool value)
+    {
+        getMainConfig().yButton.SetValue(value);
+    }
+
+    bool UIManager::get_leftThumbstick() { return getMainConfig().leftThumbstick.GetValue(); }
+    void UIManager::set_leftThumbstick(bool value)
+    {
+        getMainConfig().leftThumbstick.SetValue(value);
+    }
+    bool UIManager::get_rightThumbstick() { return getMainConfig().rightThumbstick.GetValue(); }
+    void UIManager::set_rightThumbstick(bool value)
+    {
+        getMainConfig().rightThumbstick.SetValue(value);
+    }
+    bool UIManager::get_moveLThumbstick() { return getMainConfig().moveLThumbstick.GetValue(); }
+    void UIManager::set_moveLThumbstick(bool value)
+    {
+        getMainConfig().moveLThumbstick.SetValue(value);
+    }
+    bool UIManager::get_moveRThumbstick() { return getMainConfig().moveRThumbstick.GetValue(); }
+    void UIManager::set_moveRThumbstick(bool value)
+    {
+        getMainConfig().moveRThumbstick.SetValue(value);
+    }
+
+    bool UIManager::get_leftTrigger() { return getMainConfig().leftTrigger.GetValue(); }
+    void UIManager::set_leftTrigger(bool value)
+    {
+        getMainConfig().leftTrigger.SetValue(value);
+    }
+    bool UIManager::get_rightTrigger() { return getMainConfig().rightTrigger.GetValue(); }
+    void UIManager::set_rightTrigger(bool value)
+    {
+        getMainConfig().rightTrigger.SetValue(value);
+    }
+    bool UIManager::get_leftGrip() { return getMainConfig().leftGrip.GetValue(); }
+    void UIManager::set_leftGrip(bool value)
+    {
+        getMainConfig().leftGrip.SetValue(value);
+    }
+    bool UIManager::get_rightGrip() { return getMainConfig().rightGrip.GetValue(); }
+    void UIManager::set_rightGrip(bool value)
+    {
+        getMainConfig().rightGrip.SetValue(value);
     }
 
 }

@@ -18,10 +18,22 @@ using namespace UnityEngine;
 DECLARE_CLASS_CODEGEN(PauseRemapper::UI, UIManager, Il2CppObject,
     DECLARE_INSTANCE_FIELD(HMUI::ViewController*, settingsViewController);
 
-    BSML_OPTIONS_LIST_OBJECT(BOptions, "A Button", "B Button", "X Button", "Y Button", "Left Trigger", "Right Trigger", "Click Left Thumbstick", "Click Right Thumbstick");
-    
-    DECLARE_BSML_PROPERTY(StringW, Button1);
-    DECLARE_BSML_PROPERTY(StringW, Button2);
+    DECLARE_BSML_PROPERTY(bool, aButton);
+    DECLARE_BSML_PROPERTY(bool, bButton);
+    DECLARE_BSML_PROPERTY(bool, xButton);
+    DECLARE_BSML_PROPERTY(bool, yButton);
+
+    DECLARE_BSML_PROPERTY(bool, leftThumbstick);
+    DECLARE_BSML_PROPERTY(bool, rightThumbstick);
+    DECLARE_BSML_PROPERTY(bool, moveLThumbstick);
+    DECLARE_BSML_PROPERTY(bool, moveRThumbstick);
+
+    DECLARE_BSML_PROPERTY(bool, leftGrip);
+    DECLARE_BSML_PROPERTY(bool, rightGrip);
+    DECLARE_BSML_PROPERTY(bool, leftTrigger);
+    DECLARE_BSML_PROPERTY(bool, rightTrigger);
+
+
 
     DECLARE_CTOR(ctor);
     public:
