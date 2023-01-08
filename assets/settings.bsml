@@ -1,9 +1,9 @@
 <bg id='root'
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://raw.githubusercontent.com/RedBrumbler/Quest-BSML-Docs/gh-pages/schema.xsd'>
     <tab-selector tab-tag='tabs'/>
-    <horizontal preferred-width="50" preferred-height="40" pad="1">
+    <horizontal preferred-width="45" preferred-height="45" pad="4">
         <tab tab-name="Buttons" tags="tabs">
-            <vertical bg="round-rect-panel" spacing="1">
+            <vertical bg="round-rect-panel"  pad="4">
                 <toggle-setting value="aButton" text="A Button" apply-on-change="true"/>
                 <toggle-setting value="bButton" text="B Button" apply-on-change="true"/>
                 <toggle-setting value="xButton" text="X Button" apply-on-change="true"/>
@@ -11,19 +11,22 @@
             </vertical>
         </tab>
         <tab tab-name="Thumbsticks" tags="tabs">
-            <vertical bg="round-rect-panel" spacing="1">
+            <vertical bg="round-rect-panel"  pad="4">
                 <toggle-setting value="leftThumbstick" text="Click Left Thumbstick" apply-on-change="true"/>
                 <toggle-setting value="rightThumbstick" text="Click Right Thumbstick" apply-on-change="true"/>
-                <toggle-setting value="moveLThumbstick" text="Move Left Thumbstick (any direction)" apply-on-change="true"/>
-                <toggle-setting value="moveRThumbstick" text="Move Right Thumbstick (any direction)" apply-on-change="true"/>
             </vertical>
         </tab>
         <tab tab-name="Triggers" tags="tabs">
-            <vertical bg="round-rect-panel" spacing="1">
+            <vertical bg="round-rect-panel"  pad="4">
                 <toggle-setting value="leftTrigger" text="Left Trigger" apply-on-change="true"/>
                 <toggle-setting value="rightTrigger" text="Right Trigger" apply-on-change="true"/>
                 <toggle-setting value="leftGrip" text="Left Grip" apply-on-change="true"/>
                 <toggle-setting value="rightGrip" text="Right Grip" apply-on-change="true"/>
+            </vertical>
+        </tab>
+        <tab tab-name="Help!" tags="tabs">
+            <vertical bg="round-rect-panel"  pref-width="80" pad="4">
+                <text text="Pause Remapper now allows you to map as many buttons to pause as you want. To choose which button pauses, find the button you would like then use the toggle to the right of it to enable it." word-wrapping="true" />
             </vertical>
         </tab>
     </horizontal>
