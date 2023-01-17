@@ -2,8 +2,8 @@
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://raw.githubusercontent.com/RedBrumbler/Quest-BSML-Docs/gh-pages/schema.xsd'>
     <tab-selector tab-tag='tabs'/>
     <horizontal preferred-width="45" preferred-height="45" pad="4">
-        <tab tab-name="Buttons" tags="tabs">
-            <vertical bg="round-rect-panel"  pad="4">
+        <tab tab-name="Buttons" tags="tabs" vertical-fit="PreferredSize">
+            <vertical bg="round-rect-panel"  pad="4" vertical-fit="PreferredSize">
                 <toggle-setting value="aButton" text="A Button" apply-on-change="true"/>
                 <toggle-setting value="bButton" text="B Button" apply-on-change="true"/>
                 <toggle-setting value="xButton" text="X Button" apply-on-change="true"/>
@@ -11,7 +11,7 @@
             </vertical>
         </tab>
         <tab tab-name="Thumbsticks" tags="tabs">
-            <vertical bg="round-rect-panel"  pad="4">
+            <vertical bg="round-rect-panel"  pad="4" vertical-fit="PreferredSize">
                 <toggle-setting value="leftThumbstick" text="Click Right Thumbstick" apply-on-change="true"/>
                 <toggle-setting value="rightThumbstick" text="Click Left Thumbstick" apply-on-change="true"/>
             </vertical>
