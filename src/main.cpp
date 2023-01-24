@@ -17,13 +17,14 @@
 #include "GlobalNamespace/HMMainThreadDispatcher.hpp"
 #include "System/Action.hpp"
 #include "UnityEngine/SceneManagement/SceneManager.hpp"
-
+#include "UnityEngine/Time.hpp"
 using namespace PauseRemapper::UI;
 using namespace GlobalNamespace;
 using namespace QuestUI;
+using namespace UnityEngine;
 PauseController *pauser;
 PauseMenuManager *pauseMENU;
-
+float timeHeld;
 bool inGameplay;
 std::string failReason;
 
@@ -42,12 +43,12 @@ MAKE_HOOK_MATCH(SceneChanged, &UnityEngine::SceneManagement::SceneManager::Inter
     SceneChanged(prevScene, nextScene);
     // Check that the scene is primary gameplay
     if (nextScene && nextScene.get_name() == "GameCore")
-    {   
+    {
         inGameplay = true;
         failReason = "UNKNOWN EXCEPTION";
         // Find both unity objects of *PauseController* and *PauseMenuManager* and assign them to pauser, pauseMENU
-        pauser = UnityEngine::Resources::FindObjectsOfTypeAll<PauseController *>().FirstOrDefault();
-        pauseMENU = UnityEngine::Resources::FindObjectsOfTypeAll<PauseMenuManager *>().FirstOrDefault();
+        if (!pauser) pauser = UnityEngine::Resources::FindObjectsOfTypeAll<PauseController *>().FirstOrDefault();
+        if (!pauseMENU) pauseMENU = UnityEngine::Resources::FindObjectsOfTypeAll<PauseMenuManager *>().FirstOrDefault();
     }
     else
     {
@@ -68,12 +69,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::One, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
     // B button
@@ -83,12 +93,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Two, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
     // X Button
@@ -98,12 +117,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Three, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
     // Y Button
@@ -112,12 +140,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Four, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
     // Left Trigger
@@ -126,12 +163,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryIndexTrigger, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
     // Right Trigger
@@ -140,12 +186,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryIndexTrigger, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
     // Grip Buttons
@@ -154,12 +209,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryHandTrigger, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
     if (getMainConfig().rightGrip.GetValue())
@@ -167,12 +231,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryHandTrigger, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
     // left thumb stick
@@ -181,12 +254,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstick, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
     // right tumbick
@@ -196,12 +278,21 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstick, OVRInput::Controller::Touch))
         {
             getLogger().info("A Selected Pause Button Was Clicked/Pressed");
+            timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
             // Check that the user is within gameplay (not menu)
             if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
             {
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
+            else if (pauser->paused && timeHeld == 1)
+            {
+                pauseMENU->didPressContinueButtonEvent->Invoke();
+            }
+        }
+        else
+        {
+            timeHeld = 0;
         }
     }
 }
