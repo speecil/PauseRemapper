@@ -47,8 +47,8 @@ MAKE_HOOK_MATCH(SceneChanged, &UnityEngine::SceneManagement::SceneManager::Inter
         inGameplay = true;
         failReason = "UNKNOWN EXCEPTION";
         // Find both unity objects of *PauseController* and *PauseMenuManager* and assign them to pauser, pauseMENU
-        if (!pauser) pauser = UnityEngine::Resources::FindObjectsOfTypeAll<PauseController *>().FirstOrDefault();
-        if (!pauseMENU) pauseMENU = UnityEngine::Resources::FindObjectsOfTypeAll<PauseMenuManager *>().FirstOrDefault();
+        pauser = UnityEngine::Resources::FindObjectsOfTypeAll<PauseController *>().FirstOrDefault();
+        pauseMENU = UnityEngine::Resources::FindObjectsOfTypeAll<PauseMenuManager *>().FirstOrDefault();
     }
     else
     {
@@ -76,7 +76,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
@@ -100,7 +100,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
@@ -124,7 +124,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
@@ -147,7 +147,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
@@ -170,7 +170,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
@@ -193,7 +193,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
@@ -216,7 +216,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
@@ -238,7 +238,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
@@ -261,7 +261,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
@@ -285,7 +285,7 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
                 pauser->Pause();
                 getLogger().info("Successfully Paused!");
             }
-            else if (pauser->paused && timeHeld == 1)
+            else if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1)
             {
                 pauseMENU->didPressContinueButtonEvent->Invoke();
             }
