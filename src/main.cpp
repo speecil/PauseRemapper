@@ -26,6 +26,9 @@ PauseController *pauser;
 PauseMenuManager *pauseMENU;
 float timeHeld;
 bool inGameplay;
+
+bool buttonPressed;
+
 std::string failReason;
 
 static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
@@ -50,6 +53,7 @@ void BroPaused()
     {
         pauser->Pause(), getLogger().info("Successfully Paused!");
     }
+    return;
 }
 
 // Hook for seeing what scene the game is currently in
@@ -76,19 +80,16 @@ MAKE_HOOK_MATCH(SceneChanged, &UnityEngine::SceneManagement::SceneManager::Inter
 MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDispatcher *self)
 {
     AnUpdate(self);
-
+    buttonPressed = false;
     // A button lmfao
     if (getMainConfig().aButton.GetValue())
     {
 
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::One, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+
     }
     // B button
     if (getMainConfig().bButton.GetValue())
@@ -96,12 +97,9 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
 
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Two, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+
     }
 
     // X Button
@@ -110,83 +108,62 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
 
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Three, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+
     }
     // Y Button
     if (getMainConfig().yButton.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Four, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+
     }
     // Left Trigger
     if (getMainConfig().leftTrigger.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryIndexTrigger, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+
     }
     // Right Trigger
     if (getMainConfig().rightTrigger.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryIndexTrigger, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+
     }
     // Grip Buttons
     if (getMainConfig().leftGrip.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryHandTrigger, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+
     }
     if (getMainConfig().rightGrip.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryHandTrigger, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+
     }
     // left thumb stick
     if (getMainConfig().leftThumbstick.GetValue())
     {
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstick, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+
     }
     // right tumbick
     if (getMainConfig().rightThumbstick.GetValue())
@@ -194,12 +171,16 @@ MAKE_HOOK_MATCH(AnUpdate, &HMMainThreadDispatcher::Update, void, HMMainThreadDis
         // Check that the button is pressed
         if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstick, OVRInput::Controller::Touch))
         {
-            BroPaused();
+            buttonPressed = true;
         }
-        else
-        {
-            timeHeld = 0;
-        }
+        
+
+    }
+    if(buttonPressed){
+        BroPaused();
+    }
+    else{
+        timeHeld = 0;
     }
 }
 
