@@ -49,7 +49,7 @@ void BroPaused()
     {
         pauseMENU->didPressContinueButtonEvent->Invoke();
     }
-    else if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause())
+    else if (inGameplay && pauser && pauser->m_CachedPtr.m_value && pauser->get_canPause() && timeHeld < 0.6)
     {
         pauser->Pause(), getLogger().info("Successfully Paused!");
     }
