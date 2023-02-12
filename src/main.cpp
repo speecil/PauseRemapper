@@ -45,7 +45,7 @@ void BroPaused()
     getLogger().info("A Selected Pause Button Was Clicked/Pressed");
     timeHeld += UnityEngine::Time::get_deltaTime(); // increase time held
     // Check that the user is within gameplay (not menu)
-    if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1 && timeHeld < 1.5)
+    if (pauser && pauser->m_CachedPtr.m_value && pauser->paused && timeHeld >= 1 && timeHeld < 1.1)
     {
         pauseMENU->didPressContinueButtonEvent->Invoke();
     }
