@@ -4,7 +4,7 @@
   "info": {
     "name": "Pause Remapper",
     "id": "PauseRemapper",
-    "version": "1.1.1",
+    "version": "1.2.1",
     "url": null,
     "additionalData": {
       "overrideSoName": "libPauseRemapper.so"
@@ -27,7 +27,7 @@
     },
     {
       "id": "codegen",
-      "versionRange": "^0.32.0",
+      "versionRange": "^0.33.0",
       "additionalData": {}
     },
     {
@@ -37,17 +37,17 @@
     },
     {
       "id": "bsml",
-      "versionRange": "^0.2.10",
+      "versionRange": "^0.3.1",
       "additionalData": {}
     },
     {
       "id": "questui",
-      "versionRange": "^0.17.10",
+      "versionRange": "^0.17.11",
       "additionalData": {}
     },
     {
       "id": "custom-types",
-      "versionRange": "^0.15.22",
+      "versionRange": "^0.15.23",
       "additionalData": {}
     },
     {
@@ -55,5 +55,6 @@
       "versionRange": "^1.0.2",
       "additionalData": {}
     }
-  ]
+  ],
+  "workspace": null
 }

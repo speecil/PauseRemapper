@@ -26,7 +26,7 @@
         </tab>
         <tab tab-name="Help!" tags="tabs">
             <vertical bg="round-rect-panel"  pref-width="80" pad="4">
-                <text text="Pause Remapper now allows you to map as many buttons to pause as you want. To choose which button pauses, find the button you would like then use the toggle to the right of it to enable it." word-wrapping="true" />
+                <text text="Pause Remapper now allows you to map as many buttons to pause/resume as you want. To choose which button pauses, find the button you would like then use the toggle to the right of it to enable it." word-wrapping="true" />
                 <text text="Message speecil#5350 on discord if there are any issues" font-color="lime" anchor-pos-y="-1"/>
             </vertical>
         </tab>
