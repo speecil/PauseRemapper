@@ -4,7 +4,7 @@
   "info": {
     "name": "Pause Remapper",
     "id": "PauseRemapper",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "url": null,
     "additionalData": {
       "overrideSoName": "libPauseRemapper.so"
@@ -53,6 +53,11 @@
     {
       "id": "config-utils",
       "versionRange": "^1.0.2",
+      "additionalData": {}
+    },
+    {
+      "id": "lapiz",
+      "versionRange": "^0.1.11",
       "additionalData": {}
     }
   ],
