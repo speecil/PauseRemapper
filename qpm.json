@@ -54,6 +54,11 @@
       "id": "config-utils",
       "versionRange": "^1.0.2",
       "additionalData": {}
+    },
+    {
+      "id": "lapiz",
+      "versionRange": "^0.1.11",
+      "additionalData": {}
     }
   ],
   "workspace": null
