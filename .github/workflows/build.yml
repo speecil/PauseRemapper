@@ -4,7 +4,7 @@ name: NDK build
 
 env:
     module_id: PauseRemapper
-    qmodName: PauseRemapper
+    qmodName: Pause Remapper
 
 on:
   workflow_dispatch:
