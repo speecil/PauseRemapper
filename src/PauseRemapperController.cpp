@@ -67,99 +67,33 @@ namespace PauseRemapper
         return;
     }
 
+    #include <unordered_map>
+    std::unordered_map<bool, GlobalNamespace::OVRInput::Button> buttonMapping = {
+        {getMainConfig().aButton.GetValue(), GlobalNamespace::OVRInput::Button::One},
+        {getMainConfig().bButton.GetValue(), GlobalNamespace::OVRInput::Button::Two},
+        {getMainConfig().xButton.GetValue(), GlobalNamespace::OVRInput::Button::Three},
+        {getMainConfig().yButton.GetValue(), GlobalNamespace::OVRInput::Button::Four},
+        {getMainConfig().leftTrigger.GetValue(), GlobalNamespace::OVRInput::Button::PrimaryIndexTrigger},
+        {getMainConfig().rightTrigger.GetValue(), GlobalNamespace::OVRInput::Button::SecondaryIndexTrigger},
+        {getMainConfig().leftGrip.GetValue(), GlobalNamespace::OVRInput::Button::PrimaryHandTrigger},
+        {getMainConfig().rightGrip.GetValue(), GlobalNamespace::OVRInput::Button::SecondaryHandTrigger},
+        {getMainConfig().leftThumbstick.GetValue(), GlobalNamespace::OVRInput::Button::SecondaryThumbstick},
+        {getMainConfig().rightThumbstick.GetValue(), GlobalNamespace::OVRInput::Button::PrimaryThumbstick}
+    };
+    
     void PauseRemapperController::Tick()
     {
-        if (getMainConfig().aButton.GetValue())
+        for (const auto& button : buttonMapping)
         {
-
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::One, OVRInput::Controller::Touch))
+            if (button.first && GlobalNamespace::OVRInput::Get(button.second, OVRInput::Controller::Touch))
             {
                 buttonPressed = true;
-            }
-        }
-        // B button
-        if (getMainConfig().bButton.GetValue())
-        {
-
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Two, OVRInput::Controller::Touch))
-            {
-                buttonPressed = true;
+                break;
             }
         }
 
-        // X Button
-        if (getMainConfig().xButton.GetValue())
-        {
-
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Three, OVRInput::Controller::Touch))
-            {
-                buttonPressed = true;
-            }
-        }
-        // Y Button
-        if (getMainConfig().yButton.GetValue())
-        {
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::Four, OVRInput::Controller::Touch))
-            {
-                buttonPressed = true;
-            }
-        }
-        // Left Trigger
-        if (getMainConfig().leftTrigger.GetValue())
-        {
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryIndexTrigger, OVRInput::Controller::Touch))
-            {
-                buttonPressed = true;
-            }
-        }
-        // Right Trigger
-        if (getMainConfig().rightTrigger.GetValue())
-        {
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryIndexTrigger, OVRInput::Controller::Touch))
-            {
-                buttonPressed = true;
-            }
-        }
-        // Grip Buttons
-        if (getMainConfig().leftGrip.GetValue())
-        {
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryHandTrigger, OVRInput::Controller::Touch))
-            {
-                buttonPressed = true;
-            }
-        }
-        if (getMainConfig().rightGrip.GetValue())
-        {
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryHandTrigger, OVRInput::Controller::Touch))
-            {
-                buttonPressed = true;
-            }
-        }
-        // left thumb stick
-        if (getMainConfig().leftThumbstick.GetValue())
-        {
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::SecondaryThumbstick, OVRInput::Controller::Touch))
-            {
-                buttonPressed = true;
-            }
-        }
-        // right tumbick
-        if (getMainConfig().rightThumbstick.GetValue())
-        {
-            // Check that the button is pressed
-            if (GlobalNamespace::OVRInput::Get(GlobalNamespace::OVRInput::Button::PrimaryThumbstick, OVRInput::Controller::Touch))
-            {
-                buttonPressed = true;
-            }
-        }
-        if (buttonPressed)
-        {
-            PauseTrigger();
-        }
-        else
-        {
-            timeHeld = 0;
-        }
+        if (buttonPressed) PauseTrigger();
+        else timeHeld = 0;
         buttonPressed = false;
-    }
+    }   
 }
