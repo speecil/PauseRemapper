@@ -115,6 +115,7 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "*.bsml": "xml",
-        "__memory": "cpp"
+        "__memory": "cpp",
+        "__verbose_abort": "cpp"
     }
 }

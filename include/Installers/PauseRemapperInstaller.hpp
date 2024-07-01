@@ -8,7 +8,7 @@
 #include "PauseRemapperController.hpp"
 
 DECLARE_CLASS_CODEGEN(PauseRemapper::Installers, PauseRemapperInstaller, ::Zenject::Installer,
-                      DECLARE_OVERRIDE_METHOD(void, InstallBindings, il2cpp_utils::il2cpp_type_check::MetadataGetter<&::Zenject::Installer::InstallBindings>::get());
+                      DECLARE_OVERRIDE_METHOD(void, InstallBindings, il2cpp_utils::il2cpp_type_check::MetadataGetter<&::Zenject::Installer::InstallBindings>::methodInfo());
                       DECLARE_DEFAULT_CTOR();
-                      DECLARE_PRIVATE_FIELD(PauseRemapper::PauseRemapperController*, _controllerPrefab);
+                      DECLARE_INSTANCE_FIELD_PRIVATE(PauseRemapper::PauseRemapperController*, _controllerPrefab);
                       )

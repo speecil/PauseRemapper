@@ -3,7 +3,6 @@
 #include "GlobalNamespace/AudioTimeSyncController.hpp"
 #include "GlobalNamespace/IReadonlyBeatmapData.hpp"
 #include "GlobalNamespace/VRController.hpp"
-#include "GlobalNamespace/IDifficultyBeatmap.hpp"
 #include "GlobalNamespace/PauseMenuManager.hpp"
 #include "System/IDisposable.hpp"
 #include "Zenject/DiContainer.hpp"
@@ -26,12 +25,12 @@ using namespace GlobalNamespace;
     }
 
 ___DECLARE_TYPE_WRAPPER_INHERITANCE(PauseRemapper, PauseRemapperController, Il2CppTypeEnum::IL2CPP_TYPE_CLASS, Il2CppObject, "PauseRemapper", INTERFACES, 0, nullptr,
-                                    DECLARE_PRIVATE_FIELD(PauseController*, _pauseController);
-                                    DECLARE_PRIVATE_FIELD(PauseMenuManager*, _pauseMenuManager);
+                                    DECLARE_INSTANCE_FIELD_PRIVATE(PauseController*, _pauseController);
+                                    DECLARE_INSTANCE_FIELD_PRIVATE(PauseMenuManager*, _pauseMenuManager);
                                     DECLARE_CTOR(ctor, PauseController* pauseController, PauseMenuManager* pauseMenuManager);
-                                    DECLARE_OVERRIDE_METHOD(void, Initialize, il2cpp_utils::il2cpp_type_check::MetadataGetter<&::Zenject::IInitializable::Initialize>::get());
-                                    DECLARE_OVERRIDE_METHOD(void, Dispose, il2cpp_utils::il2cpp_type_check::MetadataGetter<&::System::IDisposable::Dispose>::get());
-                                    DECLARE_OVERRIDE_METHOD(void, Tick, il2cpp_utils::il2cpp_type_check::MetadataGetter<&::Zenject::ITickable::Tick>::get());
+                                    DECLARE_OVERRIDE_METHOD(void, Initialize, il2cpp_utils::il2cpp_type_check::MetadataGetter<&::Zenject::IInitializable::Initialize>::methodInfo());
+                                    DECLARE_OVERRIDE_METHOD(void, Dispose, il2cpp_utils::il2cpp_type_check::MetadataGetter<&::System::IDisposable::Dispose>::methodInfo());
+                                    DECLARE_OVERRIDE_METHOD(void, Tick, il2cpp_utils::il2cpp_type_check::MetadataGetter<&::Zenject::ITickable::Tick>::methodInfo());
                                     private:
                                         float timeHeld;
                                         bool buttonPressed;

@@ -1,9 +1,10 @@
 #pragma once
 #include "HMUI/ViewController.hpp"
 
+#include "System/Object.hpp"
 #include "custom-types/shared/macros.hpp"
 #include "bsml/shared/macros.hpp"
-#include "bsml/shared/BSML/Components/TextGradientUpdater.hpp"
+#include "System/Object.hpp"
 #include "bsml/shared/BSML/Tags/ButtonTag.hpp"
 #include "bsml/shared/BSML/Components/Settings/ToggleSetting.hpp"
 #include "bsml/shared/BSML/Tags/TextTag.hpp"
@@ -15,7 +16,7 @@ using namespace UnityEngine;
 
 #define GET_FIND_METHOD(mPtr) il2cpp_utils::il2cpp_type_check::MetadataGetter<mPtr>::get()
 
-DECLARE_CLASS_CODEGEN(PauseRemapper::UI, UIManager, Il2CppObject,
+DECLARE_CLASS_CODEGEN(PauseRemapper::UI, UIManager, System::Object,
     DECLARE_INSTANCE_FIELD(HMUI::ViewController*, settingsViewController);
 
     DECLARE_BSML_PROPERTY(bool, aButton);
